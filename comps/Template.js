@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import Nav from './Nav'
+import Foot from './Foot'
 
 const Template = props => (
     <>
@@ -7,7 +9,9 @@ const Template = props => (
             <link rel="icon" href="/red.png" />
         </Head>
         <main>
+            <Nav />
             {props.children}
+            <Foot />
         </main>
     </>
 )
