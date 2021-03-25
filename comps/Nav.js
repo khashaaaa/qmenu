@@ -15,22 +15,22 @@ const Nav = () => (
 
         <ul className="menu">
             <li>
-                <a href="">Бүтээгдэхүүн</a>
+                <a href="#sect1">Дижитал Меню</a>
             </li>
             <li>
-                <a href="">Давуу тал</a>
+                <a href="#sect2">Давуу тал</a>
             </li>
             <li>
-                <a href="">Нийтлэг асуултууд</a>
+                <a href="#sect3">Үйлчилгээ</a>
             </li>
             <li>
-                <a href="">Үнийн санал</a>
+                <a href="#sect4">QRMS</a>
             </li>
             <li>
-                <a href="">Харилцагчид</a>
+                <a href="#sect5">Таблет Меню</a>
             </li>
             <li>
-                <a href="">Хаяг</a>
+                <a href="#sect6">Хаяг</a>
             </li>
         </ul>
 

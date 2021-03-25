@@ -14,7 +14,7 @@ const Sect1 = () => (
         </div>
 
         <div className="qrcode">
-          <Image src="/qrcode.png" width={180} height={180} alt="qmenu-qrcode" />
+          <Image src="/qrcode.png" width={120} height={120} alt="qmenu-qrcode" />
         </div>
       </div>
 
