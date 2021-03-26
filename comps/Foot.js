@@ -10,7 +10,6 @@ const Foot = () => (
         </div>
 
         <div className="copyright">
-            <Image src="/red.png" width={50} height={50} alt="Quinno" />
             <p>© Кьюинно ХХК 2021</p>
         </div>
     </footer>
