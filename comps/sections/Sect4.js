@@ -14,7 +14,7 @@ const Sect4 = () => (
         <div className="options">
 
             <div>
-                <Image src="/tablet.png" width={300} height={450} alt="tablet-menu" />
+                <Image src="/sect4/tablet.png" width={300} height={450} alt="Таблет Меню" />
             </div>
 
             <ul>
