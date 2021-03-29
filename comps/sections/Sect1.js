@@ -31,8 +31,8 @@ const Sect1 = () => {
               autoplay={{ delay: 3000 }}
               spaceBetween={0}
               slidesPerView={1}
-              onSlideChange={() => {}}
-              onSwiper={() => {}}
+              onSlideChange={() => { }}
+              onSwiper={() => { }}
             >
               <SwiperSlide>
                 <Image

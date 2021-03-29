@@ -1,11 +1,17 @@
 import React, { useState } from 'react'
+import Image from 'next/image'
 import Head from "next/head"
 import Nav from './Nav'
 import Foot from './Foot'
+import { animateScroll as scroll } from 'react-scroll'
 
 const Template = props => {
 
     const [mode, setMode] = useState(false)
+
+    const toTop = () => {
+        scroll.scrollToTop()
+    }
 
     return (
         <React.Fragment>
@@ -23,8 +29,11 @@ const Template = props => {
                 <link rel="icon" href="/red.png" />
             </Head>
             <Nav mode={mode} setMode={setMode} />
-            <main className={`${mode ? "dark":"light"}`}>
+            <main className={`${mode ? "dark" : "light"}`}>
                 {props.children}
+                <span onClick={toTop} id="totop">
+                    <Image src="/totop.png" width={20} height={20} alt="to top" />
+                </span>
             </main>
             <Foot />
         </React.Fragment>

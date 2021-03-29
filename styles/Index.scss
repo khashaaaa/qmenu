@@ -1,19 +1,40 @@
+@font-face {
+    src: local('JetBrains'), url('/JetBrains_Mono/static/JetBrainsMono-Regular.ttf') format("truetype");
+    font-family: 'JetBrains';
+}
+
+@font-face {
+    src: local('Raleway'), url('/Raleway/Raleway-Regular.ttf') format('truetype');
+    font-family: 'Raleway';
+}
+
+@import 'vars';
+@import 'mixins';
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 ::-moz-selection {
-    background: rgb(207, 32, 8);
+    background: $red;
 }
-  
+
 ::selection {
-    background: rgb(207, 32, 8);
+    background: $red;
+}
+
+html {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.navbar, #sect1, #sect2, #sect3, #sect4, #sect5, #sect6 {
+    padding: $offset;
 }
 
 .navbar {
+    font-family: 'JetBrains', monospace;
     position: fixed;
     top: 0;
     left: 0;
@@ -23,9 +44,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 15%;
-    box-shadow: 0px 0px 2px 2px rgba(125, 125, 125, .2);
+    box-shadow: 0px 1px 3px 0 rgba(125, 125, 125, .2);
     z-index: 2;
+
+    @include mediumdesktop {
+        padding: 0 5%;
+        font-size: 14px;
+    }
 
     .logo {
         display: flex;
@@ -33,12 +58,17 @@
     }
 
     .menu {
+
+        @include tabletlandscape {
+            display: none;
+        }
         
         li {
             display: inline-block;
             list-style: none;
 
             a {
+                font-weight: bold;
                 padding: 5px 0;
                 cursor: pointer;
                 text-decoration: none;
@@ -48,7 +78,7 @@
             }
 
             .active {
-                border-bottom: 3px solid rgb(207, 32, 8);
+                border-bottom: 3px solid $red;
             }
         }
     }
@@ -68,28 +98,34 @@
         }
 
         a {
-            font-size: 14px;
             text-decoration: none;
-            color: rgb(207, 32, 8);
+            color: $red;
             font-weight: bold;
-            border-radius: 8px;
+            font-size: 14px;
+            border-radius: $smallradius;
+
+            @include tabletlandscape {
+                font-size: 12px;
+            }
+            @include phone {
+                font-size: 10px;
+            }
 
             &:last-of-type {
                 padding: 10px;
                 margin-left: 1rem;
                 border: 0;
                 color: white;
-                background-color: rgb(207, 32, 8);
+                background-color: $red;
             }
         }
     }
 }
 
 main {
-    background-image: url('/main/blob6.svg'), url('/main/blob5.svg'), url('/main/blob4.svg');
-    background-repeat: no-repeat, no-repeat, no-repeat;
-    background-position: top left, center right, bottom left;
-    background-size: 450px, 500px, 330px;
+    font-family: 'JetBrains';
+    letter-spacing: 0.5px;
+    position: relative;
 }
 
 .dark {
@@ -121,9 +157,18 @@ main {
 }
 
 #sect1 {
-    display: flex;
-    padding: 0 15%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 4rem;
     height: 100vh;
+
+    @include mediumdesktop {
+        padding: 8rem 5%;
+    }
+    @include tabletportrait {
+        display: block;
+        height: auto;
+    }
 
     .article {
         width: auto;
@@ -141,39 +186,65 @@ main {
                 font-size: 30px;
                 font-weight: 500;
                 margin-bottom: 1rem;
-                border-bottom: 1rem solid rgb(219, 112, 24);
+                border-bottom: 1rem solid $orange;
                 width: 260px;
                 line-height: 2;
+
+                @include phone {
+                    font-size: 22px;
+                    font-weight: bold;
+                }
             }
     
             p {
                 font-size: 18px;
                 line-height: 1.6;
+
+                @include mediumdesktop {
+                    font-size: 16px;
+                }
+                @include phone {
+                    font-size: 14px;
+                }
             }
         }
 
         .qrcode {
             margin-top: 4rem;
             padding: 0.5rem;
-            border-radius: 8px;
-            box-shadow: 0px 1px 3px 2px rgba(125, 125, 125, .2);
+            border-radius: $smallradius;
+            box-shadow: 0px 3px 3px -1px rgba(125, 125, 125, .2);
             transition: 0.2s;
 
             &:hover {
-                box-shadow: 0px 1px 4px 3px rgba(125, 125, 125, .3);
+                box-shadow: 0px 5px 5px 0px rgba(125, 125, 125, .3);
             }
         }
     }
 
     .showcase {
         width: 100%;
+        height: 100%;
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        z-index: 0;
+        background: url('/revel.jpg') no-repeat 100%;
+
+        @include mediumdesktop {
+            justify-content: center;
+            margin-top: 5rem;
+        }
+        @include tabletportrait {
+            background: none;
+        }
 
         .wrap {
             position: relative;
+            display: none;
+
+            @include tabletportrait {
+                display: block;
+            }
     
             .slider {
                 position: absolute;
@@ -187,11 +258,15 @@ main {
 }
 
 #sect2 {
-    padding: 0 15%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    @include mediumdesktop {
+        padding: 0 5%;
+        height: auto;
+    }
 
     .top {
         display: flex;
@@ -202,11 +277,23 @@ main {
             text-align: center;
             font-size: 30px;
             font-weight: 500;
+
+            @include phone {
+                font-size: 22px;
+                font-weight: bold;
+            }
         }
 
         p {
             line-height: 1.6;
             font-size: 18px;
+
+            @include mediumdesktop {
+                font-size: 16px;
+            }
+            @include phone {
+                font-size: 14px;
+            }
         }
     }
 
@@ -217,6 +304,16 @@ main {
         grid-column-gap: 2rem;
         text-align: center;
 
+        @include smalldesktop {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-row-gap: 2rem;
+        }
+        @include tabletportrait {
+            display: block;
+        }
+
         .item {
             cursor: pointer;
             padding: 1rem;
@@ -224,12 +321,20 @@ main {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border-radius: 16px;
-            box-shadow: 0px 1px 3px 2px rgba(125, 125, 125, .2);
+            border-radius: $bigradius;
+            box-shadow: 0 2px 4px 0 rgba(125, 125, 125, .2);
             transition: 0.2s;
 
+            @include tabletportrait {
+                margin-bottom: 2rem;
+
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+            }
+
             &:hover {
-                box-shadow: 0px 1px 4px 3px rgba(125, 125, 125, .3);
+                box-shadow: 0 2px 6px 0 rgba(125, 125, 125, .3);
             }
 
             h3 {
@@ -241,28 +346,54 @@ main {
                 text-align: left;
                 height: 11rem;
                 line-height: 1.5;
+
+                @include mediumdesktop {
+                    font-size: 14px;
+                }
+                @include smalldesktop {
+                    height: 5rem;
+                }
+                @include tabletportrait {
+                    height: auto;
+                }
             }
         }
     }
 }
 
 #sect3 {
-    padding: 0 15%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    @include mediumdesktop {
+        padding: 0 5%;
+        margin-top: 8rem;
+        height: auto;
+    }
 
     h1 {
         margin-bottom: 2rem;
         text-align: center;
         font-size: 30px;
         font-weight: 500;
+
+        @include phone {
+            font-size: 22px;
+            font-weight: bold;
+        }
     }
 
     .uses {
         display: flex;
         justify-content: space-between;
+
+        @include tabletlandscape {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
         .left, .right {
             display: flex;
@@ -283,6 +414,13 @@ main {
 
                 h3 {
                     margin-right: 1rem;
+
+                    @include mediumdesktop {
+                        font-size: 16px;
+                    }
+                    @include phone {
+                        font-size: 14px;
+                    }
                 }
             }
         }
@@ -295,12 +433,23 @@ main {
 
                 h3 {
                     margin-left: 1rem;
+
+                    @include mediumdesktop {
+                        font-size: 16px;
+                    }
+                    @include phone {
+                        font-size: 14px;
+                    }
                 }
             }
         }
 
-        .phone {
+        .wrap {
             position: relative;
+
+            @include tabletlandscape {
+                margin: 2rem 0;
+            }
 
             .image {
                 position: absolute;
@@ -312,11 +461,16 @@ main {
 }
 
 #sect4 {
-    padding: 0 15%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    @include mediumdesktop {
+        padding: 0 5%;
+        margin-top: 8rem;
+        height: auto;
+    }
 
     .text {
 
@@ -325,11 +479,23 @@ main {
             text-align: center;
             font-size: 30px;
             font-weight: 500;
+
+            @include phone {
+                font-size: 22px;
+                font-weight: bold;
+            }
         }
 
         p {
             line-height: 1.6;
             font-size: 18px;
+
+            @include mediumdesktop {
+                font-size: 16px;
+            }
+            @include phone {
+                font-size: 14px;
+            }
         }
     }
 
@@ -339,13 +505,36 @@ main {
         justify-content: center;
         margin-top: 2rem;
 
+        @include tabletportrait {
+            flex-direction: column;
+        }
+
+        .tablet {
+
+            @include tabletportrait {
+                margin: 2rem 0;
+            }
+        }
+
         ul {
             margin-left: 4rem;
+
+            @include tabletportrait {
+                align-self: flex-start;
+                margin-left: 0;
+            }
 
             li {
                 list-style-type: none;
                 margin: 1rem 0;
                 font-size: 18px;
+
+                @include mediumdesktop {
+                    font-size: 16px;
+                }
+                @include tabletportrait {
+                    font-size: 14px;
+                }
 
                 &::before {
                     content: '\2714';
@@ -357,11 +546,16 @@ main {
 }
 
 #sect5 {
-    padding: 0 15%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    @include mediumdesktop {
+        padding: 0 5%;
+        height: auto;
+        margin-top: 6rem;
+    }
 
     .article {
 
@@ -370,17 +564,33 @@ main {
             text-align: center;
             font-size: 30px;
             font-weight: 500;
+
+            @include phone {
+                font-size: 22px;
+                font-weight: bold;
+            }
         }
 
         p {
             line-height: 1.6;
             font-size: 18px;
+
+            @include mediumdesktop {
+                font-size: 16px;
+            }
+            @include phone {
+                font-size: 14px;
+            }
         }
     }
 
     span {
         margin: 1rem 0;
-        color: rgb(207, 32, 8);
+        color: $red;
+
+        @include phone {
+            font-size: 14px;
+        }
     }
 
     .options {
@@ -389,6 +599,10 @@ main {
         justify-content: center;
         margin-top: 2rem;
 
+        @include tabletportrait {
+            flex-direction: column;
+        }
+
         ul {
             margin-right: 4rem;
 
@@ -396,6 +610,13 @@ main {
                 list-style-type: none;
                 margin: 1rem 0;
                 font-size: 18px;
+
+                @include mediumdesktop {
+                    font-size: 16px;
+                }
+                @include tabletportrait {
+                    font-size: 14px;
+                }
 
                 &::before {
                     content: '\2714';
@@ -407,11 +628,16 @@ main {
 }
 
 #sect6 {
-    padding: 0 15%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    @include mediumdesktop {
+        padding: 0 5% 8rem 5%;
+        height: auto;
+        margin-top: 6rem;
+    }
 
     .article {
 
@@ -420,6 +646,11 @@ main {
             text-align: center;
             font-size: 30px;
             font-weight: 500;
+
+            @include phone {
+                font-size: 22px;
+                font-weight: bold;
+            }
         }
     }
 
@@ -427,6 +658,10 @@ main {
         display: grid;
         grid-template-rows: 1fr 1fr;
         grid-row-gap: 4rem;
+
+        @include mediumdesktop {
+            grid-row-gap: 2rem;
+        }
 
         div {
             width: 100%;
@@ -437,18 +672,32 @@ main {
             align-items: center;
             justify-content: center;
 
+            @include mediumdesktop {
+                grid-column-gap: 2rem;
+            }
+
             img {
                 padding: 2rem;
                 height: auto;
                 width: 100%;
                 filter: grayscale(100%);
                 transition: 0.2s;
-                border-radius: 16px;
-                box-shadow: 0px 1px 3px 2px rgba(125, 125, 125, .2);
+                border-radius: $bigradius;
+                box-shadow: 0 1px 3px 0 rgba(125, 125, 125, .2);
+
+                @include tabletportrait {
+                    padding: 0;
+                    border-radius: 0;
+                    box-shadow: none;
+                }
 
                 &:hover {
-                    box-shadow: 0px 1px 4px 3px rgba(125, 125, 125, .3);
+                    box-shadow: 0px 1px 6px 0 rgba(125, 125, 125, .3);
                     filter: grayscale(0);
+
+                    @include phone {
+                        box-shadow: none;
+                    }
                 }
             }
         }
@@ -456,28 +705,85 @@ main {
 }
 
 #foot {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'JetBrains';
     background-color: black;
+    padding: 0 15%;
+
+    @include mediumdesktop {
+        padding: 0 5%;
+    }
 
     .info {
-        padding: 2rem 15%;
         width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 2rem 0;
 
-        p {
-            color: white;
-            line-height: 1.6;
+        @include tabletportrait {
+            flex-direction: column;
+        }
+
+        .item {
+            display: flex;
+            align-items: flex-start;
+            margin: 1rem 0;
+
+            &:not(&:first-of-type) {
+                div {
+                    display: flex;
+                    align-self: center;
+                }
+            }
+
+            img {
+                filter: invert(100%);
+            }
+
+            p {
+                margin-left: 1rem;
+                color: white;
+                line-height: 1.6;
+                font-size: 14px;
+
+                @include tabletlandscape {
+                    margin-left: 5px;
+                }
+            }
         }
     }
 
     .copyright {
-        padding: 1rem 15%;
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
+        padding-bottom: 1rem;
 
         p {
             color: white;
+            font-size: 12px;
         }
+    }
+}
+
+#totop {
+    position: absolute;
+    box-shadow: 0 2px 4px 0 rgba(125, 125, 125, .2);
+    width: 50px;
+    height: 50px;
+    right: 15%;
+    bottom: 2rem;
+    border-radius: 50%;
+    padding: 1rem;
+    background-color: $orange;
+    cursor: pointer;
+
+    @include mediumdesktop {
+        right: 5%;
+    }
+    
+    img {
+        filter: invert(100%);
     }
 }

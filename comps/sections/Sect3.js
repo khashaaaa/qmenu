@@ -20,10 +20,13 @@ const Sect3 = () => (
                     <Image src="/sect3/request.png" width={80} height={80} alt="Өрөө цэвэрлүүлэх хүсэлт илгээх" />
                 </div>
             </div>
-            <div className="phone">
-                <Image src="/sect3/frame.png" width={260} height={530} />
+            <div className="wrap">
+                <div className="phone">
+                    <Image src="/sect3/frame.png" width={260} height={530} alt="Phone" />
+                </div>
+
                 <div className="image">
-                    <Image src="/sect3/hotel.jpg" width={228} height={400} alt="phone frame 2" />
+                    <Image src="/sect3/hotel.jpg" width={228} height={400} alt="services" />
                 </div>
             </div>
             <div className="right">

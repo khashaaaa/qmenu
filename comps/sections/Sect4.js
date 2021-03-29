@@ -3,7 +3,7 @@ import Image from 'next/image'
 const Sect4 = () => (
 
     <section id="sect4">
-        
+
         <div className="text">
             <h1>Таблет меню</h1>
             <p>
@@ -13,7 +13,7 @@ const Sect4 = () => (
 
         <div className="options">
 
-            <div>
+            <div className="tablet">
                 <Image src="/sect4/tablet.png" width={300} height={450} alt="Таблет Меню" />
             </div>
 

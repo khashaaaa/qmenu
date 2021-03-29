@@ -4,12 +4,8 @@ import { Link as Linka, animateScroll as scroll } from 'react-scroll'
 
 const Nav = ({ mode, setMode }) => {
 
-    const toTop = () => {
-        scroll.scrollToTop()
-    }
-
     return (
-        <nav className={`navbar ${mode ? "dark":"light"}`}>
+        <nav className={`navbar ${mode ? "dark" : "light"}`}>
 
             <div className="logo">
                 <Image
@@ -22,32 +18,32 @@ const Nav = ({ mode, setMode }) => {
 
             <ul className="menu">
                 <li>
-                    <Linka style={mode ? {color : 'white'}: {color: ''}} activeClass="active" to="sect1" spy={true} smooth={true} duration={500} delay={100}>
+                    <Linka style={mode ? { color: 'white' } : { color: '' }} activeClass="active" to="sect1" spy={true} smooth={true} duration={500} delay={100}>
                         Дижитал Меню
                     </Linka>
                 </li>
                 <li>
-                    <Linka style={mode ? {color : 'white'}: {color: ''}} activeClass="active" to="sect2" spy={true} smooth={true} duration={500} delay={100}>
+                    <Linka style={mode ? { color: 'white' } : { color: '' }} activeClass="active" to="sect2" spy={true} smooth={true} duration={500} delay={100}>
                         Давуу тал
                     </Linka>
                 </li>
                 <li>
-                    <Linka style={mode ? {color : 'white'}: {color: ''}} activeClass="active" to="sect3" spy={true} smooth={true} duration={500} delay={100}>
+                    <Linka style={mode ? { color: 'white' } : { color: '' }} activeClass="active" to="sect3" spy={true} smooth={true} duration={500} delay={100}>
                         Үйлчилгээ
                     </Linka>
                 </li>
                 <li>
-                    <Linka style={mode ? {color : 'white'}: {color: ''}} activeClass="active" to="sect4" spy={true} smooth={true} duration={500} delay={100}>
+                    <Linka style={mode ? { color: 'white' } : { color: '' }} activeClass="active" to="sect4" spy={true} smooth={true} duration={500} delay={100}>
                         Таблет меню
                     </Linka>
                 </li>
                 <li>
-                    <Linka style={mode ? {color : 'white'}: {color: ''}} activeClass="active" to="sect5" spy={true} smooth={true} duration={500} delay={100}>
+                    <Linka style={mode ? { color: 'white' } : { color: '' }} activeClass="active" to="sect5" spy={true} smooth={true} duration={500} delay={100}>
                         QRMS
                     </Linka>
                 </li>
                 <li>
-                    <Linka style={mode ? {color : 'white'}: {color: ''}} activeClass="active" to="sect6" spy={true} smooth={true} duration={500} delay={100}>
+                    <Linka style={mode ? { color: 'white' } : { color: '' }} activeClass="active" to="sect6" spy={true} smooth={true} duration={500} delay={100}>
                         Харилцагчид
                     </Linka>
                 </li>
@@ -57,9 +53,9 @@ const Nav = ({ mode, setMode }) => {
                 <div className="mode">
                     {
                         mode ?
-                        <Image onClick={() => setMode(!mode)} src="/sun.svg" width={30} height={30} alt="light mode" />
-                        :
-                        <Image onClick={() => setMode(!mode)} src="/moon.svg" width={30} height={30} alt="dark mode" />
+                            <Image onClick={() => setMode(!mode)} src="/sun.svg" width={30} height={30} alt="light mode" />
+                            :
+                            <Image onClick={() => setMode(!mode)} src="/moon.svg" width={30} height={30} alt="dark mode" />
                     }
                 </div>
                 <Link href="/">
