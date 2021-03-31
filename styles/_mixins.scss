@@ -14,5 +14,8 @@
   @media (max-width: 1919px) { @content; }
 }
 @mixin bigdesktop {
-  @media (min-width: 1920px) { @content; }
+  @media (max-width: 2100px) { @content; }
+}
+@mixin epicdesktop {
+  @media (min-width: 2101px) { @content; }
 }

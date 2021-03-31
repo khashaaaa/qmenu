@@ -18,19 +18,28 @@
 }
 
 ::-moz-selection {
-    background: $red;
+    background: lighten($red, 20);
+    color: white;
 }
 
 ::selection {
-    background: $red;
+    background: lighten($red, 20);
+    color: white;
 }
 
 html {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.navbar, #sect1, #sect2, #sect3, #sect4, #sect5, #sect6 {
+.navbar, #sect1, #sect2, #sect3, #sect4, #sect5, #sect6, #foot {
     padding: $offset;
+
+    @include epicdesktop {
+        padding: 0 20%;
+    }
+    @include bigdesktop {
+        padding: 0 15%;
+    }
 }
 
 .navbar {
@@ -59,7 +68,7 @@ html {
 
     .menu {
 
-        @include tabletlandscape {
+        @include tabletportrait {
             display: none;
         }
         
@@ -75,6 +84,11 @@ html {
                 color: black;
                 margin: 0 0.5rem;
                 border-bottom: 3px solid transparent;
+
+                @include tabletlandscape {
+                    font-size: 12px;
+                    margin: 0 5px;
+                }
             }
 
             .active {
@@ -106,9 +120,6 @@ html {
 
             @include tabletlandscape {
                 font-size: 12px;
-            }
-            @include phone {
-                font-size: 10px;
             }
 
             &:last-of-type {
@@ -163,15 +174,19 @@ main {
     height: 100vh;
 
     @include mediumdesktop {
-        padding: 8rem 5%;
+        padding: 0 5%;
+        height: 100%;
+    }
+    @include smalldesktop {
+        padding: 10% 5%;
     }
     @include tabletportrait {
         display: block;
-        height: auto;
+        padding-top: 20%;
     }
 
     .article {
-        width: auto;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -203,7 +218,7 @@ main {
                 @include mediumdesktop {
                     font-size: 16px;
                 }
-                @include phone {
+                @include smalldesktop {
                     font-size: 14px;
                 }
             }
@@ -215,6 +230,14 @@ main {
             border-radius: $smallradius;
             box-shadow: 0px 3px 3px -1px rgba(125, 125, 125, .2);
             transition: 0.2s;
+
+            @include smalldesktop {
+                margin-top: 1rem;
+                padding: 0;
+            }
+            @include tabletportrait {
+                margin-top: 4rem;
+            }
 
             &:hover {
                 box-shadow: 0px 5px 5px 0px rgba(125, 125, 125, .3);
@@ -228,13 +251,11 @@ main {
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        background: url('/revel.jpg') no-repeat 100%;
+        background: url('/revel.jpg') no-repeat center;
 
-        @include mediumdesktop {
+        @include tabletportrait {
             justify-content: center;
             margin-top: 5rem;
-        }
-        @include tabletportrait {
             background: none;
         }
 
@@ -265,7 +286,10 @@ main {
 
     @include mediumdesktop {
         padding: 0 5%;
-        height: auto;
+        height: 100%;
+    }
+    @include smalldesktop {
+        padding: 10% 5%;
     }
 
     .top {
@@ -291,7 +315,7 @@ main {
             @include mediumdesktop {
                 font-size: 16px;
             }
-            @include phone {
+            @include smalldesktop {
                 font-size: 14px;
             }
         }
@@ -340,6 +364,10 @@ main {
             h3 {
                 height: 4rem;
                 margin-top: 1rem;
+
+                @include tabletportrait {
+                    font-size: 16px;
+                }
             }
 
             p {
@@ -369,8 +397,10 @@ main {
 
     @include mediumdesktop {
         padding: 0 5%;
-        margin-top: 8rem;
-        height: auto;
+        height: 100%;
+    }
+    @include smalldesktop {
+        padding: 10% 5%;
     }
 
     h1 {
@@ -468,8 +498,10 @@ main {
 
     @include mediumdesktop {
         padding: 0 5%;
-        margin-top: 8rem;
-        height: auto;
+        height: 100%;
+    }
+    @include smalldesktop {
+        padding: 10% 5%;
     }
 
     .text {
@@ -493,7 +525,7 @@ main {
             @include mediumdesktop {
                 font-size: 16px;
             }
-            @include phone {
+            @include mediumdesktop {
                 font-size: 14px;
             }
         }
@@ -532,7 +564,7 @@ main {
                 @include mediumdesktop {
                     font-size: 16px;
                 }
-                @include tabletportrait {
+                @include mediumdesktop {
                     font-size: 14px;
                 }
 
@@ -553,8 +585,10 @@ main {
 
     @include mediumdesktop {
         padding: 0 5%;
-        height: auto;
-        margin-top: 6rem;
+        height: 100%;
+    }
+    @include smalldesktop {
+        padding: 10% 5%;
     }
 
     .article {
@@ -578,7 +612,7 @@ main {
             @include mediumdesktop {
                 font-size: 16px;
             }
-            @include phone {
+            @include mediumdesktop {
                 font-size: 14px;
             }
         }
@@ -588,7 +622,7 @@ main {
         margin: 1rem 0;
         color: $red;
 
-        @include phone {
+        @include mediumdesktop {
             font-size: 14px;
         }
     }
@@ -614,7 +648,7 @@ main {
                 @include mediumdesktop {
                     font-size: 16px;
                 }
-                @include tabletportrait {
+                @include mediumdesktop {
                     font-size: 14px;
                 }
 
@@ -634,9 +668,11 @@ main {
     justify-content: center;
 
     @include mediumdesktop {
-        padding: 0 5% 8rem 5%;
-        height: auto;
-        margin-top: 6rem;
+        padding: 0 5%;
+        height: 100%;
+    }
+    @include smalldesktop {
+        padding: 10% 5%;
     }
 
     .article {
@@ -662,6 +698,11 @@ main {
         @include mediumdesktop {
             grid-row-gap: 2rem;
         }
+        @include phone {
+            grid-template-rows: 1fr;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 2rem;
+        }
 
         div {
             width: 100%;
@@ -675,6 +716,10 @@ main {
             @include mediumdesktop {
                 grid-column-gap: 2rem;
             }
+            @include phone {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(5, 1fr);
+            }
 
             img {
                 padding: 2rem;
@@ -683,7 +728,7 @@ main {
                 filter: grayscale(100%);
                 transition: 0.2s;
                 border-radius: $bigradius;
-                box-shadow: 0 1px 3px 0 rgba(125, 125, 125, .2);
+                border: 1px solid rgba(125, 125, 125, .2);
 
                 @include tabletportrait {
                     padding: 0;
@@ -692,7 +737,6 @@ main {
                 }
 
                 &:hover {
-                    box-shadow: 0px 1px 6px 0 rgba(125, 125, 125, .3);
                     filter: grayscale(0);
 
                     @include phone {
@@ -707,7 +751,6 @@ main {
 #foot {
     font-family: 'JetBrains';
     background-color: black;
-    padding: 0 15%;
 
     @include mediumdesktop {
         padding: 0 5%;
@@ -742,7 +785,7 @@ main {
 
             p {
                 margin-left: 1rem;
-                color: white;
+                color: darkgray;
                 line-height: 1.6;
                 font-size: 14px;
 
@@ -758,10 +801,10 @@ main {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding-bottom: 1rem;
+        padding: 2rem 0;
 
         p {
-            color: white;
+            color: darkgray;
             font-size: 12px;
         }
     }
@@ -779,6 +822,12 @@ main {
     background-color: $orange;
     cursor: pointer;
 
+    @include epicdesktop {
+        right: 20%;
+    }
+    @include bigdesktop {
+        right: 15%;
+    }
     @include mediumdesktop {
         right: 5%;
     }

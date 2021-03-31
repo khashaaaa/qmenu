@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 const Sect6 = () => {
 
     return (
