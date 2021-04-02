@@ -13,25 +13,25 @@ const Sect2 = () => (
 
         <div className="bot">
             <div className="item">
-                <Image src="/sect2/ft1.svg" width={60} height={60} alt="Борлуулалт нэмэгдэнэ" />
+                <Image src="/sect2/increase.png" width={80} height={80} alt="Борлуулалт нэмэгдэнэ" />
                 <h3>Борлуулалт нэмэгдэнэ</h3>
                 <p>Cross selling хийж борлуулалтаа нэмэгдүүлэх боломжтой болно.</p>
             </div>
 
             <div className="item">
-                <Image src="/sect2/ft2.svg" width={60} height={60} alt="Зардал бууруулна" />
+                <Image src="/sect2/save.png" width={80} height={80} alt="Зардал бууруулна" />
                 <h3>Зардал бууруулна</h3>
                 <p>Qmenu нэвтрүүлснээр зөөгчийн тоо бууруулах боломжтой болно. Мөн хэвлэмэл меню арчлах дахин хэвлэхтэй холбоотой зардлууд байхгүй болно.</p>
             </div>
 
             <div className="item">
-                <Image src="/sect2/ft3.svg" width={60} height={60} alt="Үйлчилгээний чанар нэмэгдэнэ" />
+                <Image src="/sect2/service.png" width={80} height={80} alt="Үйлчилгээний чанар нэмэгдэнэ" />
                 <h3>Үйлчилгээний чанар нэмэгдэнэ</h3>
                 <p>Зөөгчид захиалгаа буруу авахтай холбоотой асуудал дахин гарахгүй. Мөн үйлчлүүлэгчдээсээ үйлчилгээний талаарх сэтгэгдэл болон зөөгчдийн үнэлгээг авах боломжтой.</p>
             </div>
 
             <div className="item">
-                <Image src="/sect2/ft4.svg" width={60} height={60} alt="Онлайнаар төлнө" />
+                <Image src="/sect2/payment.png" width={80} height={80} alt="Онлайнаар төлнө" />
                 <h3>Онлайнаар төлнө</h3>
                 <p>Захиалгаа хийхдээ төлбөрөө онлайнаар төлөх боломжтой болно. Ингэснээр рестораны үйл ажиллагааг хөнгөвчилнө.</p>
             </div>

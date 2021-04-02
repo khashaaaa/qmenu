@@ -61,8 +61,8 @@ const Nav = ({ mode, setMode }) => {
                 <Link href="/">
                     <a>Нэвтрэх</a>
                 </Link>
-                <Link href="/">
-                    <a>Бүртгүүлэх</a>
+                <Link href="https://test.qrms.mn">
+                    <a target="_blank">Бүртгүүлэх</a>
                 </Link>
             </div>
         </nav>

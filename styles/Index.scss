@@ -1,11 +1,6 @@
 @font-face {
-    src: local('JetBrains'), url('/JetBrains_Mono/static/JetBrainsMono-Regular.ttf') format("truetype");
-    font-family: 'JetBrains';
-}
-
-@font-face {
-    src: local('Raleway'), url('/Raleway/Raleway-Regular.ttf') format('truetype');
-    font-family: 'Raleway';
+    src: local('Inter'), url('/Inter/static/Inter-Regular.ttf') format("truetype");
+    font-family: 'Inter';
 }
 
 @import 'vars';
@@ -43,7 +38,7 @@ html {
 }
 
 .navbar {
-    font-family: 'JetBrains', monospace;
+    font-family: 'Inter', monospace;
     position: fixed;
     top: 0;
     left: 0;
@@ -57,8 +52,11 @@ html {
     z-index: 2;
 
     @include mediumdesktop {
-        padding: 0 5%;
+        padding: 0 10%;
         font-size: 14px;
+    }
+    @include smalldesktop {
+        padding: 0 5%;
     }
 
     .logo {
@@ -134,7 +132,7 @@ html {
 }
 
 main {
-    font-family: 'JetBrains';
+    font-family: 'Inter';
     letter-spacing: 0.5px;
     position: relative;
 }
@@ -149,40 +147,46 @@ main {
         }
     }
 
-    #sect2 {
-
-        .bot {
-
-            .item {
-
-                img {
-                    filter: invert(100%);
-                }
-            }
-        }
-    }
-
     h1, h2, h3, h4, h5, span, p, ul, li, a {
         color: white;
     }
 }
 
 #sect1 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 4rem;
+    display: flex;
+    align-items: center;
     height: 100vh;
 
     @include mediumdesktop {
-        padding: 0 5%;
-        height: 100%;
+        padding: 0 10%;
     }
     @include smalldesktop {
         padding: 10% 5%;
+        height: 100%;
+    }
+    @include tabletlandscape {
+        display: block;
+        padding-top: 10%;
     }
     @include tabletportrait {
-        display: block;
-        padding-top: 20%;
+        padding-top: 15%;
+    }
+    @include phone {
+        padding-top: 25%;
+    }
+
+    .slidehead1, .slidehead2, .slidehead3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        padding: 2rem;
+    }
+
+    .slidehead1 {
+        background-color: #3F68D2;
+    }
+    .slidehead2 {
+        background-color: #4C5771;
     }
 
     .article {
@@ -191,6 +195,7 @@ main {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        margin-right: 2rem;
 
         .text {
             display: flex;
@@ -201,9 +206,7 @@ main {
                 font-size: 30px;
                 font-weight: 500;
                 margin-bottom: 1rem;
-                border-bottom: 1rem solid $orange;
-                width: 260px;
-                line-height: 2;
+                color: white;
 
                 @include phone {
                     font-size: 22px;
@@ -214,6 +217,7 @@ main {
             p {
                 font-size: 18px;
                 line-height: 1.6;
+                color: white;
 
                 @include mediumdesktop {
                     font-size: 16px;
@@ -224,36 +228,33 @@ main {
             }
         }
 
-        .qrcode {
-            margin-top: 4rem;
-            padding: 0.5rem;
-            border-radius: $smallradius;
-            box-shadow: 0px 3px 3px -1px rgba(125, 125, 125, .2);
-            transition: 0.2s;
+        .option {
+            width: 100%;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
 
-            @include smalldesktop {
-                margin-top: 1rem;
-                padding: 0;
-            }
-            @include tabletportrait {
-                margin-top: 4rem;
-            }
-
-            &:hover {
-                box-shadow: 0px 5px 5px 0px rgba(125, 125, 125, .3);
+            button {
+                width: 260px;
+                margin-top: 2rem;
+                cursor: pointer;
+                border: 0;
+                outline: 0;
+                background-color: black;
+                color: white;
+                border-radius: $smallradius;
+                padding: 0.5rem 1rem;
+                font-size: 16px;
+                font-weight: bold;
+                font-family: 'Inter';
             }
         }
     }
 
     .showcase {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        background: url('/revel.jpg') no-repeat center;
 
-        @include tabletportrait {
+        @include tabletlandscape {
             justify-content: center;
             margin-top: 5rem;
             background: none;
@@ -263,7 +264,7 @@ main {
             position: relative;
             display: none;
 
-            @include tabletportrait {
+            @include tabletlandscape {
                 display: block;
             }
     
@@ -285,11 +286,15 @@ main {
     justify-content: center;
 
     @include mediumdesktop {
-        padding: 0 5%;
-        height: 100%;
+        padding: 0 10%;
     }
     @include smalldesktop {
-        padding: 10% 5%;
+        padding: 5% 5%;
+        height: 100%;
+    }
+    @include tabletlandscape {
+        display: block;
+        padding-top: 5%;
     }
 
     .top {
@@ -394,13 +399,18 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: rgb(40, 40, 40);
 
     @include mediumdesktop {
-        padding: 0 5%;
-        height: 100%;
+        padding: 0 10%;
     }
     @include smalldesktop {
-        padding: 10% 5%;
+        padding: 0 5%;
+    }
+    @include tabletlandscape {
+        padding: 5% 5%;
+        display: block;
+        height: 100%;
     }
 
     h1 {
@@ -408,6 +418,7 @@ main {
         text-align: center;
         font-size: 30px;
         font-weight: 500;
+        color: white;
 
         @include phone {
             font-size: 22px;
@@ -417,7 +428,7 @@ main {
 
     .uses {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
 
         @include tabletlandscape {
             flex-direction: column;
@@ -444,6 +455,7 @@ main {
 
                 h3 {
                     margin-right: 1rem;
+                    color: white;
 
                     @include mediumdesktop {
                         font-size: 16px;
@@ -463,6 +475,7 @@ main {
 
                 h3 {
                     margin-left: 1rem;
+                    color: white;
 
                     @include mediumdesktop {
                         font-size: 16px;
@@ -497,11 +510,17 @@ main {
     justify-content: center;
 
     @include mediumdesktop {
-        padding: 0 5%;
-        height: 100%;
+        padding: 0 10%;
     }
     @include smalldesktop {
-        padding: 10% 5%;
+        padding: 0 5%;
+    }
+    @include tabletlandscape {
+        display: block;
+        height: 100%;
+    }
+    @include tabletlandscape {
+        padding: 5%;
     }
 
     .text {
@@ -584,11 +603,17 @@ main {
     justify-content: center;
 
     @include mediumdesktop {
-        padding: 0 5%;
-        height: 100%;
+        padding: 0 10%;
     }
     @include smalldesktop {
-        padding: 10% 5%;
+        padding: 0 5%;
+    }
+    @include tabletlandscape {
+        display: block;
+        height: 100%;
+    }
+    @include tabletlandscape {
+        padding: 5%;
     }
 
     .article {
@@ -668,11 +693,22 @@ main {
     justify-content: center;
 
     @include mediumdesktop {
-        padding: 0 5%;
-        height: 100%;
+        padding: 0 10%;
     }
     @include smalldesktop {
-        padding: 10% 5%;
+        padding: 0 5%;
+    }
+    @include tabletlandscape {
+        display: block;
+        padding-bottom: 10%;
+        height: 100%;
+    }
+    @include tabletportrait {
+        padding-top: 5%;
+        padding-bottom: 15%;
+    }
+    @include phone {
+        padding-bottom: 25%;
     }
 
     .article {
@@ -692,67 +728,28 @@ main {
 
     .customers {
         display: grid;
-        grid-template-rows: 1fr 1fr;
-        grid-row-gap: 4rem;
+        grid-template-columns: repeat(auto-fit, minmax(120px, auto));
+        gap: 2rem;
 
-        @include mediumdesktop {
-            grid-row-gap: 2rem;
-        }
-        @include phone {
-            grid-template-rows: 1fr;
-            grid-template-columns: 1fr 1fr;
-            grid-column-gap: 2rem;
-        }
+        img {
+            transition: 0.2s;
+            filter: grayscale(100%);
 
-        div {
-            width: 100%;
-            height: 100%;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-column-gap: 4rem;
-            align-items: center;
-            justify-content: center;
-
-            @include mediumdesktop {
-                grid-column-gap: 2rem;
-            }
-            @include phone {
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(5, 1fr);
-            }
-
-            img {
-                padding: 2rem;
-                height: auto;
-                width: 100%;
-                filter: grayscale(100%);
-                transition: 0.2s;
-                border-radius: $bigradius;
-                border: 1px solid rgba(125, 125, 125, .2);
-
-                @include tabletportrait {
-                    padding: 0;
-                    border-radius: 0;
-                    box-shadow: none;
-                }
-
-                &:hover {
-                    filter: grayscale(0);
-
-                    @include phone {
-                        box-shadow: none;
-                    }
-                }
+            &:hover {
+                filter: grayscale(0);
             }
         }
     }
 }
 
 #foot {
-    font-family: 'JetBrains';
+    font-family: 'Inter';
     background-color: black;
 
     @include mediumdesktop {
+        padding: 0 10%;
+    }
+    @include smalldesktop {
         padding: 0 5%;
     }
 
@@ -829,6 +826,9 @@ main {
         right: 15%;
     }
     @include mediumdesktop {
+        right: 10%;
+    }
+    @include smalldesktop {
         right: 5%;
     }
     
