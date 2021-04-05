@@ -35,8 +35,8 @@ const Sect1 = () => {
         <SwiperSlide className="slidehead2">
           <div className="article">
             <div className="text">
-              <h1>Та яагаад  “Дижитал МЕНЮ” хэрэглэх шаардлагатай вэ?</h1>
-              <p>Өдөр бүр олон зуун хүний гараас гарт дамждаг "ЦААСАН МЕНЮ" нь нян бактери тараах гол хэрэгсэл болдог бөгөөд цар тахалын энэ хүнд үед “ДИЖИТАЛ МЕНЮ” ашиглан зайнаас хоолоо захиалж, зайнаас төлбөрөө төлж өөрсдийгөө болон бусдыг эрсдэлээс хамгаалъя!</p>
+              <h1>Та яагаад  <b>"ДИЖИТАЛ МЕНЮ"</b> хэрэглэх шаардлагатай вэ?</h1>
+              <p>Өдөр бүр олон зуун хүний гараас гарт дамждаг "ЦААСАН МЕНЮ" нь нян бактери тараах гол хэрэгсэл болдог бөгөөд цар тахалын энэ хүнд үед <b>“ДИЖИТАЛ МЕНЮ”</b> ашиглан зайнаас хоолоо захиалж, зайнаас төлбөрөө төлж өөрсдийгөө болон бусдыг эрсдэлээс хамгаалъя!</p>
             </div>
           </div>
 
@@ -46,10 +46,14 @@ const Sect1 = () => {
         </SwiperSlide>
 
         <SwiperSlide className="slidehead3">
+          <div className="showcase">
+            <Image src="/sect1/phone.png" width={800} height={650} alt="slide 3" />
+          </div>
+
           <div className="article">
             <div className="text">
-              <h1>QMENU боломжууд</h1>
-              <ul>
+              <h1><b>QMenu</b> боломжууд</h1>
+              <ul className="advantages">
                 <li>
                   <p>РЕСТОРАН ДОТОРХ ЗАХИАЛГА (DINE-IN)</p>
                   <span>Харилцагч ресторан дотор хоолоо захиалах Дижитал Меню</span>
@@ -68,10 +72,6 @@ const Sect1 = () => {
                 </li>
               </ul>
             </div>
-          </div>
-
-          <div className="showcase">
-            <Image src="/sect1/phone.png" width={800} height={650} alt="slide 3" />
           </div>
         </SwiperSlide>
       </Swiper>

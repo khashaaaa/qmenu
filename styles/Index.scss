@@ -179,14 +179,84 @@ main {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 4rem;
-        padding: 2rem;
+        padding: 4rem;
     }
 
     .slidehead1 {
         background-color: #3F68D2;
+        background-image: url('/sect1/qrback.png');
+        background-position: 40% 60%;
+        background-repeat: no-repeat;
+        background-size: 120px;
+
+        .article {
+
+            .text {
+
+                h1 {
+                    color: white;
+                }
+                        
+                p {
+                    color: white;
+                }
+            }
+        }
     }
     .slidehead2 {
         background-color: #4C5771;
+        background-image: url('/sect1/qrback.png'), url('/sect1/qrback.png');
+        background-position: 10% 20%, 45% 70%;
+        background-repeat: no-repeat;
+        background-size: 250px, 120px;
+
+        .article {
+
+            .text {
+
+                h1 {
+                    color: white;
+                }
+                        
+                p {
+                    color: white;
+                }
+            }
+        }
+    }
+    .slidehead3 {
+        background-image: url('/sect1/qrback.png');
+        background-position: 60% 20%;
+        background-repeat: no-repeat;
+        background-size: 400px;
+
+        .article {
+
+            .text {
+
+                h1 {
+                    margin-left: -2rem;
+                }
+
+                .advantages {
+                    margin-left: 4rem;
+
+                    li {
+                        list-style: none;
+                        padding: 1rem 0;
+                        
+                        p {
+                            font-size: 18px;
+                            margin-left: -2rem;
+                        }
+                        span {
+                            font-weight: bold;
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     .article {
@@ -206,7 +276,6 @@ main {
                 font-size: 30px;
                 font-weight: 500;
                 margin-bottom: 1rem;
-                color: white;
 
                 @include phone {
                     font-size: 22px;
@@ -217,7 +286,6 @@ main {
             p {
                 font-size: 18px;
                 line-height: 1.6;
-                color: white;
 
                 @include mediumdesktop {
                     font-size: 16px;
