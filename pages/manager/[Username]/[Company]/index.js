@@ -1,40 +1,46 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Axios from 'axios'
 
 const Index = () => {
 
-    const [manager, setManager] = useState('')
-    const [token, setToken] = useState('')
     const [errorstate, setErrorState] = useState('')
     const [toastclass, setToastclass] = useState('')
     const [toastmsg, setToastmsg] = useState('')
 
+    const [name, setName] = useState('')
+    const [phone, setPhone] = useState('')
+
+    const domainRef = useRef()
+    const nameRef = useRef()
+    const phoneRef = useRef()
+
     const router = useRouter()
 
+    let creds
+    if (typeof window !== "undefined") {
+        let str = window.sessionStorage.getItem('manager')
+        creds = JSON.parse(str)
+    }
+
     useEffect(() => {
-        const session = window.sessionStorage.getItem('manager')
-        const creds = JSON.parse(session)
-        setManager(creds.manager)
-        setToken(creds.token)
-        if(!window.sessionStorage.getItem('manager') || window.sessionStorage.getItem('manager') == null) {
-            return router.push('/manager/login')
-        }
+        nameRef.current = name
+        phoneRef.current = phone
     }, [])
 
     const CompanyReg = (self) => {
         self.preventDefault()
 
         let formdata = {
-            name: self.target.name.value,
+            name: name,
             domain: self.target.domain.value,
-            phone: self.target.phone.value,
-            owner: manager[0].manager_id
+            phone: phone,
+            owner: creds.manager[0].manager_id
         }
 
         const config = {
-            headers: { Authorization: `Bearer ${token}` }
+            headers: { Authorization: `Bearer ${creds.token}` }
         }
 
         if(formdata.name == "" || formdata.domain == "" || formdata.phone == "") {
@@ -48,7 +54,7 @@ const Index = () => {
             setToastclass('show')
             setTimeout(() => {
                 setToastclass('out'),
-                router.push(`/manager/${manager.name}/${router.query.Company}/dash`)
+                router.push(`/manager/${creds.manager[0].name}/profile`)
             }, 2000)
         })
         .catch(error => {
@@ -76,15 +82,15 @@ const Index = () => {
                 <form onSubmit={CompanyReg}>
                     <div className="inputbox">
                         <label htmlFor="domain">Компани(ресторан)-ийн домэйн</label>
-                        <input id="domain" name="domain" type="text" defaultValue={router.query.Company} disabled />
+                        <input ref={domainRef} name="domain" type="text" defaultValue={router.query.Company} disabled />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="name">Компани(ресторан)-ийн нэр</label>
-                        <input id="name" name="name" type="text" />
+                        <input ref={nameRef} onChange={val => setName(val.target.value)} value={name} name="name" type="text" />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="phone">Утасны дугаар</label>
-                        <input id="phone" name="phone" type="text" />
+                        <input ref={phoneRef} onChange={val => setPhone(val.target.value)} value={phone} name="phone" type="text" />
                     </div>
                     <button type="submit">Бүртгэх</button>
                 </form>

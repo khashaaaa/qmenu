@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Axios from 'axios'
@@ -6,30 +6,40 @@ import Axios from 'axios'
 const SearchPage = () => {
 
     const [manager, setManager] = useState('')
-    const [token, setToken] = useState('')
     const [errorstate, setErrorState] = useState('')
     const [toastclass, setToastclass] = useState('')
     const [toastmsg, setToastmsg] = useState('')
     const [loader, setLoader] = useState(false)
+    const [domain, setDomain] = useState('')
+    const searchRef = useRef(null)
 
     const router = useRouter()
 
+    let creds
+    if (typeof window !== "undefined") {
+        let str = window.sessionStorage.getItem('manager')
+        creds = JSON.parse(str)
+    }
+
     useEffect(() => {
-        const session = window.sessionStorage.getItem('manager')
-        const creds = JSON.parse(session)
-        setToken(creds.token)
-        if(!window.sessionStorage.getItem('manager') || window.sessionStorage.getItem('manager') == null) {
+        if(!creds) {
             return router.push('/manager/login')
         }
 
-        Axios.get(`http://localhost:3001/manager/${creds.manager[0].manager_id}`)
+        searchRef.current = domain
+
+        const config = {
+            headers: { Authorization: `Bearer ${creds.token}` }
+        }
+
+        Axios.get(`http://localhost:3001/manager/${creds.manager[0].manager_id}`, config)
         .then((res) => {
             setManager(res.data[0])
         })
         .catch(error => {
             setErrorState(error.message)
             if (errorstate.includes(409)) {
-                setToastmsg('Алдаа гарлаа.')
+                setToastmsg('Мэдээлэл давхцаж байна.')
                 setToastclass('show')
                 setTimeout(() => { setToastclass('out') }, 2000)
             }
@@ -41,7 +51,7 @@ const SearchPage = () => {
         setLoader(true)
 
         const config = {
-            headers: { Authorization: `Bearer ${token}` }
+            headers: { Authorization: `Bearer ${creds.token}` }
         }
 
         if (self.target.domain.value == "") {
@@ -71,11 +81,6 @@ const SearchPage = () => {
                 setToastclass('show')
                 setTimeout(() => {setToastclass('out')}, 2000)
             }
-            else {
-                setToastmsg('Алдаа гарлаа')
-                setToastclass('show')
-                setTimeout(() => {setToastclass('out')}, 2000)
-            }
         })
     }
 
@@ -90,7 +95,7 @@ const SearchPage = () => {
             </div>
 
             <form onSubmit={SearchDomain}>
-                <input name="domain" type="text" placeholder="Домэйн нэр хайх" />
+                <input ref={searchRef} onChange={val => setDomain(val.target.value)} value={domain} name="domain" type="text" placeholder="Домэйн нэр хайх" />
                 <button type="submit">
                     {
                         loader ?

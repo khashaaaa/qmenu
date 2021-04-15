@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Axios from 'axios'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -9,15 +9,39 @@ const SignUp = () => {
     const [toastclass, setToastclass] = useState('')
     const [toastmsg, setToastmsg] = useState('')
 
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
+
+    const nameRef = useRef()
+    const emailRef = useRef()
+    const phoneRef = useRef()
+
     const router = useRouter()
+
+    useEffect(() => {
+        let creds
+        if (typeof window !== "undefined") {
+            let str = window.sessionStorage.getItem('manager')
+            creds = JSON.parse(str)
+        }
+
+        nameRef.current = name
+        emailRef.current = email
+        phoneRef.current = phone
+
+        if(creds) {
+            return router.push(`/manager/${creds.manager[0].name}/profile`)
+        }
+    }, [])
 
     const RegisterForm = (self) => {
         self.preventDefault()
 
         let formdata = {
-            name: self.target.name.value,
-            email: self.target.email.value,
-            phone: self.target.phone.value
+            name: name,
+            email: email,
+            phone: phone
         }
 
         if(formdata.name == "" || formdata.email == "" || formdata.phone == "") {
@@ -55,15 +79,15 @@ const SignUp = () => {
                 <form onSubmit={RegisterForm}>
                     <div className="inputbox">
                         <label htmlFor="name">Өөрийн нэр</label>
-                        <input id="name" name="name" type="text" />
+                        <input ref={nameRef} onChange={val => setName(val.target.value)} value={name} name="name" type="text" />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="email">Имэйл хаяг</label>
-                        <input id="email" name="email" type="email" />
+                        <input ref={emailRef} onChange={val => setEmail(val.target.value)} value={email} name="email" type="email" />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="phone">Утасны дугаар</label>
-                        <input id="phone" name="phone" type="text" />
+                        <input ref={phoneRef} onChange={val => setPhone(val.target.value)} value={phone} name="phone" type="text" />
                     </div>
                     <button type="submit">Бүртгэх</button>
                 </form>

@@ -1,6 +1,7 @@
 @font-face {
-    src: local('Inter'), url('/Inter/static/Inter-Regular.ttf') format("truetype");
     font-family: 'Inter';
+    src: local('Inter'), url('/Inter/static/Inter-Regular.ttf') format("truetype");
+    font-display: swap;
 }
 
 @import 'vars';
@@ -23,7 +24,7 @@
     color: white;
 }
 
-html {
+html, body, button {
     font-family: 'Inter', monospace;
 }
 
@@ -997,7 +998,6 @@ main {
                 border-radius: $smallradius;
                 color: white;
                 font-weight: bold;
-                font-family: 'Inter', monospace;
                 font-size: 12px;
                 padding: 10px;
             }
@@ -1116,9 +1116,137 @@ main {
                 border-radius: $smallradius;
                 color: white;
                 font-weight: bold;
-                font-family: 'Inter', monospace;
                 font-size: 12px;
                 padding: 10px;
+            }
+        }
+    }
+}
+
+#profile {
+
+    .wrap {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+
+        aside {
+            padding: 2rem 1rem;
+            height: 100vh;
+            background-color: darkslategray;
+            color: white;
+
+            .pro {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: fit-content;
+
+                p {
+                    font-size: 20px;
+                }
+
+                .logout {
+                    cursor: pointer;
+                    filter: invert(100%);
+                }
+            }
+
+            .edit {
+                margin-top: 2rem;
+
+                .info {
+                    
+                    p {
+                        line-height: 2;
+                    }
+                }
+
+                .action {
+                    margin-top: 2rem;
+                    text-align: right;
+
+                    button {
+                        cursor: pointer;
+                        outline: 0;
+                        border: 0;
+                        color: white;
+                        padding: 5px;
+                        font-weight: bold;
+                        border-radius: $smallradius;
+
+                        &:first-of-type {
+                            margin-right: 0.5rem;
+                            background-color: limegreen;
+                        }
+                        &:last-of-type {
+                            background-color: crimson;
+                        }
+                    }
+                }
+            }
+        }
+
+        main {
+            padding: 2rem 1rem;
+
+            h1 {
+                text-align: center;
+                font-size: 20px;
+                margin-bottom: 1rem;
+            }
+
+            table {
+                width: 100%;
+                border: 1px solid lightgray;
+                border-collapse: collapse;
+                padding: 5px;
+
+                th, td {
+                    border: 1px solid lightgray;
+                    border-collapse: collapse;
+                    padding: 5px;
+                }
+
+                tbody {
+
+                    .company {
+
+                        .action {
+                            display: flex;
+                            justify-content: space-evenly;
+
+                            button {
+                                cursor: pointer;
+                                outline: 0;
+                                border: 0;
+                                padding: 5px;
+                                border-radius: $smallradius;
+
+                                &:first-of-type {
+                                    background-color: limegreen;
+                                }
+
+                                &:last-of-type {
+                                    background-color: crimson;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .plus {
+                cursor: pointer;
+                outline: 0;
+                border: 0;
+                background-color: green;
+                color: white;
+                padding: 10px;
+                font-weight: bold;
+                border-radius: $smallradius;
+                margin-top: 1rem;
+                float: right;
             }
         }
     }
