@@ -58,11 +58,11 @@ const Nav = ({ mode, setMode }) => {
                             <Image onClick={() => setMode(!mode)} src="/moon.svg" width={30} height={30} alt="dark mode" />
                     }
                 </div>
-                <Link href="/">
+                <Link href="/manager/login">
                     <a>Нэвтрэх</a>
                 </Link>
-                <Link href="https://test.qrms.mn">
-                    <a target="_blank">Бүртгүүлэх</a>
+                <Link href="/manager/signup">
+                    <a>Бүртгүүлэх</a>
                 </Link>
             </div>
         </nav>

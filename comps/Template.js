@@ -26,7 +26,7 @@ const Template = props => {
                 <meta name="twitter:title" content="Рестораны цахим меню" />
                 <meta name="twitter:description" content="Рестораны цахим меню" />
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                <link rel="icon" href="/red.png" />
+                <link rel="icon" href="/favicon.ico" />
             </Head>
             <Nav mode={mode} setMode={setMode} />
             <main className={`${mode ? "dark" : "light"}`}>

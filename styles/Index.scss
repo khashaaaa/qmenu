@@ -5,8 +5,9 @@
 
 @import 'vars';
 @import 'mixins';
+@import 'keyframes';
 
-* {
+*, ::after, ::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -23,7 +24,47 @@
 }
 
 html {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Inter', monospace;
+}
+
+.toast {
+    display: none;
+}
+.toast.show {
+    position: absolute;
+    bottom: 10%;
+    left: 40%;
+    z-index: 2;
+    background-color: darkorange;
+    border-radius: $smallradius;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    min-width: max-content;
+    height: max-content;
+    padding: 1rem;
+    -webkit-animation: fadein 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: fadein 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+.toast.out {
+    position: absolute;
+    bottom: 10%;
+    left: 40%;
+    z-index: 2;
+    background-color: darkorange;
+    border-radius: $smallradius;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    min-width: max-content;
+    height: max-content;
+    padding: 1rem;
+    -webkit-animation: fadeout 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: fadeout 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .navbar, #sect1, #sect2, #sect3, #sect4, #sect5, #sect6, #foot {
@@ -38,7 +79,6 @@ html {
 }
 
 .navbar {
-    font-family: 'Inter', monospace;
     position: fixed;
     top: 0;
     left: 0;
@@ -132,7 +172,6 @@ html {
 }
 
 main {
-    font-family: 'Inter';
     letter-spacing: 0.5px;
     position: relative;
 }
@@ -315,7 +354,6 @@ main {
                 padding: 0.5rem 1rem;
                 font-size: 16px;
                 font-weight: bold;
-                font-family: 'Inter';
             }
         }
     }
@@ -811,7 +849,6 @@ main {
 }
 
 #foot {
-    font-family: 'Inter';
     background-color: black;
 
     @include mediumdesktop {
@@ -902,5 +939,187 @@ main {
     
     img {
         filter: invert(100%);
+    }
+}
+
+#signup {
+    background-color: lighten($red, 5%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .wrap {
+        z-index: 1;
+        background-color: white;
+        display: flex;
+        width: 700px;
+        border-radius: $bigradius;
+
+        .showcase {
+            width: 40%;
+            border-radius: $bigradius 0 0 $bigradius;
+        }
+
+        form {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .inputbox {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 1rem;
+                width: 250px;
+
+                label {
+                    font-size: 10px;
+                    margin-bottom: 5px;
+                }
+
+                input {
+                    border-radius: $smallradius;
+                    outline: 0;
+                    border: 1px solid lightgray;
+                    padding: 10px;
+                    font-size: 14px;
+                    color: gray;
+                }
+            }
+
+            button {
+                cursor: pointer;
+                background-color: $red;
+                border: 0;
+                outline: 0;
+                border-radius: $smallradius;
+                color: white;
+                font-weight: bold;
+                font-family: 'Inter', monospace;
+                font-size: 12px;
+                padding: 10px;
+            }
+        }
+    }
+}
+
+#search {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .article {
+
+        h1 {
+            text-align: center;
+            font-size: 20px;
+        }
+        
+        p {
+            text-align: center;
+            margin: 2rem 0;
+        }
+    }
+
+    form {
+        display: flex;
+        justify-content: space-between;
+
+        input {
+            border-radius: $smallradius;
+            border: 1px solid lightgray;
+            padding: 10px;
+            font-size: 16px;
+            outline: 0;
+            color: gray;
+
+            &:focus::placeholder {
+                color: transparent;
+            }
+        }
+
+        button {
+            margin-left: 1rem;
+            cursor: pointer;
+            background-color: $red;
+            outline: 0;
+            border: 0;
+            border-radius: $smallradius;
+            width: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .search {
+                filter: invert(100%);
+            }
+        }
+    }
+}
+
+#company {
+    background: lighten($red, 5%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .wrap {
+        z-index: 1;
+        background-color: white;
+        display: flex;
+        width: 700px;
+        border-radius: $bigradius;
+
+        .showcase {
+            width: 40%;
+            border-radius: 0 $bigradius $bigradius 0;
+        }
+
+        form {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .inputbox {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 1rem;
+                width: 250px;
+
+                label {
+                    font-size: 10px;
+                    margin-bottom: 5px;
+                }
+
+                input {
+                    border-radius: $smallradius;
+                    outline: 0;
+                    border: 1px solid lightgray;
+                    padding: 10px;
+                    font-size: 14px;
+                    color: gray;
+                }
+            }
+
+            button {
+                cursor: pointer;
+                background-color: $red;
+                border: 0;
+                outline: 0;
+                border-radius: $smallradius;
+                color: white;
+                font-weight: bold;
+                font-family: 'Inter', monospace;
+                font-size: 12px;
+                padding: 10px;
+            }
+        }
     }
 }
